@@ -12,9 +12,14 @@ button.addEventListener("click", intenar)
 
 function intenar(){
     const INTENTO = leerIntento();
+    const regex = /\d/
     if(INTENTO === palabra){
         terminar("<h1>GANASTE! :)</h1>")
         
+    }
+    else if (regex.test(INTENTO)){
+        alert("Solo letras sin numeros")
+        return
     }
     const GRID = document.getElementById("grid");
     const ROW = document.createElement('div');
@@ -22,6 +27,8 @@ function intenar(){
     for (let i in palabra){
         const SPAN = document.createElement('span');
         SPAN.className = 'letter';
+        SPAN.style.width ="50px"
+        SPAN.style.height= "50px"
         SPAN.style.borderRadius = '5px'
         if (INTENTO[i]===palabra[i]){ 
             SPAN.innerHTML = INTENTO[i];
